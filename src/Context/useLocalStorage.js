@@ -1,5 +1,6 @@
 import React from "react";
 
+    
 
 function useLocalStorage(keyItem, initialValue){
 
@@ -36,9 +37,6 @@ function useLocalStorage(keyItem, initialValue){
   
       }, 1000);
     });
-  
-  
-  
     
     //fPuente
     const cnxItem = (pList) =>{
@@ -58,7 +56,9 @@ function useLocalStorage(keyItem, initialValue){
       cnxItem,
       currently_loading,
       currently_error
-    };
-  }
+    }; 
+}
+  
+  
 
-  export {useLocalStorage2}
+  export {useLocalStorage}

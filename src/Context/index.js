@@ -1,5 +1,6 @@
-import React from 'react'
-import {useLocalStorage} from './useLocalStoage';
+import React from "react";
+import {useLocalStorage} from './useLocalStorage';
+
 const TodoContext = React.createContext();
 
 function TodoProvider(props){
@@ -9,12 +10,10 @@ function TodoProvider(props){
         currently_item: currently_list,
         cnxItem: cnxTodos,
         currently_loading,
-        perror: currently_error
+        currently_error
     
-                            } = useLocalStorage('keyOne',[]);                                //>>>ESTADO / ACTUALIZACION DEL ESTADO
-       /* const [currently_name, cnxName] = useLocalStorage('keyTwo_name','Jalz DeLe^Z');  */                //>>>ESTADO / ACTUALIZACION DEL ESTADO
-    
-      //>>>>>>>>  PROGRAMACION
+                            } = useLocalStorage('keyOne',[]); 
+
       const [currently_search, upgrate_search] = React.useState('');
       const vCheckedList = currently_list.filter(fAux => !!fAux.completed).length;
       const vTotalList = currently_list.length;
@@ -53,26 +52,36 @@ function TodoProvider(props){
         cnxTodos(aNewList);
       };
 
-    return(
+    return (
         <TodoContext.Provider value={{
-                
-            ploading,       
-            pError,         
-            vTotalList,     
-            vCheckedList,    
-            currently_searc,
-            upgrate_search,   
-            aAux,           
-            vfListCheck,    
+
+            currently_loading,         
+            currently_error,           
+            vTotalList,       
+            vCheckedList,     
+            currently_search, 
+            upgrate_search,    
+            aAux,             
+            vfListCheck,      
             vfListDelete,   
         }}>
             {props.children}
         </TodoContext.Provider>
     );
+
 }
+
+export {TodoContext, TodoProvider}
+
+
+
 /* 
-<TodoContext.Consumer>
-
-</TodoContext.Consumer> */
-
-export { TodoProvider ,TodoContext}
+ploading        = {currently_loading}
+pError          = {currently_error}
+vTotalList      = {vTotalList}
+vCheckedList    = {vCheckedList} 
+currently_search= {currently_search}
+upgrate_search  = {upgrate_search}  
+aAux            = {aAux}
+vfListCheck     = {vfListCheck}
+vfListDelete    = {vfListDelete} */
