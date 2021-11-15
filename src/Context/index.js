@@ -11,12 +11,12 @@ function TodoProvider(props){
         cnxItem: cnxTodos,
         currently_loading,
         currently_error
-    
-                            } = useLocalStorage('keyOne',[]); 
+      } = useLocalStorage('keyOne',[]); 
 
       const [currently_search, upgrate_search] = React.useState('');
       const vCheckedList = currently_list.filter(fAux => !!fAux.completed).length;
       const vTotalList = currently_list.length;
+      const [currently_openModal, upgrate_openModal] = React.useState(false);
     
       let aAux = [];
     
@@ -36,6 +36,15 @@ function TodoProvider(props){
       }
     
     
+      const vfAddList= (pText) => { 
+        const aNewList =[...currently_list];  
+        aNewList.push({
+          text: pText,
+          completed:false,
+        }); 
+        cnxTodos(aNewList);
+      };
+
       const vfListCheck = (pText) => {
         const vUnique = currently_list.findIndex(fAux3 => fAux3.text === pText);
         const aNewList =[...currently_list];
@@ -62,8 +71,11 @@ function TodoProvider(props){
             currently_search, 
             upgrate_search,    
             aAux,             
+            vfAddList,      
             vfListCheck,      
-            vfListDelete,   
+            vfListDelete, 
+            currently_openModal,
+            upgrate_openModal
         }}>
             {props.children}
         </TodoContext.Provider>

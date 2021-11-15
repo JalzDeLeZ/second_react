@@ -3,8 +3,8 @@ import './CreateTodoButton.css'
 
 function CreateTodoButton_C(props) {
 
-  const onClickButton = (pMsj) => {
-    alert(pMsj);
+  const onClickButton = () => {
+    props.upgrate_openModal(fAuxState => !fAuxState)
   };
 
   return (

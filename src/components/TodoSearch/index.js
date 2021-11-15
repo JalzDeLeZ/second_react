@@ -1,11 +1,15 @@
 import React from 'react'; 
+import { TodoContext } from '../../Context';
 import './TodoSearch.css';
 
-function TodoSearch_C({pCurrently, pUpgrate}) {
+function TodoSearch_C() {
 
+  const {currently_search, upgrate_search} = React.useContext(TodoContext)
+  
+  
   const fSearch = (pEvent) =>{
     console.log(pEvent.target.value);
-    pUpgrate(pEvent.target.value);
+    upgrate_search(pEvent.target.value);
   };
 
   return (
@@ -13,7 +17,7 @@ function TodoSearch_C({pCurrently, pUpgrate}) {
     <input 
     className="cTodoSearch" 
     placeholder="Ingrese los Datos de su Busqueda" 
-    value = {pCurrently}
+    value = {currently_search}
     onChange = {fSearch}
     />
   );

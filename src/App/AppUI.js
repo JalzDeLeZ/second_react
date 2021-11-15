@@ -5,11 +5,26 @@ import {TodoList_C} from '../components/TodoList'
 import {TodoSearch_C} from '../components/TodoSearch'
 import {CreateTodoButton_C} from '../components/CreateTodoButton'
 import {TodoContext} from '../Context/index'
+import {Modal_C} from '../Modal/index'
+import {FormModal_C} from '../TodoForm/index'
 
-function AppUI(
-    /* {vTotalList, vCheckedList, currently_search, upgrate_search, aAux, vfListCheck, vfListDelete, 
-                pError,ploading
-            } */){
+
+import { TodosError } from '../TodosError/index.js';
+import { TodosLoading } from '../TodosLoading/index.js';
+import { EmptyTodos } from '../EmptyTodos/index.js';
+
+function AppUI( ){
+
+    const { 
+        currently_loading,
+        currently_error, 
+        currently_search, 
+        aAux,
+        vfListCheck,
+        vfListDelete, 
+        currently_openModal,
+        upgrate_openModal
+        } = React.useContext(TodoContext)
     
     return (
         <React.Fragment>
@@ -18,46 +33,12 @@ function AppUI(
 
             <TodoSearch_C/>
 
-            <TodoContext.Consumer>
-                {({ 
-                    currently_loading,
-                    currently_error, 
-                    currently_search, 
-                    aAux,
-                    vfListCheck,
-                    vfListDelete, }) => (
-                    <TodoList_C>
-
-                        {currently_error && <p>Ah!!! Colapsus Brutus...</p>}
-                        {currently_loading && <p>Estamos cargando, no desesperes...</p>}
-                        {(!currently_loading && !currently_search.length) && <p>!Crea tu Primer Item</p>}
-        
-                        {aAux.map(fAux =>(
-                            <TodoItem_C 
-                                key         = {fAux.text}
-                                text        = {fAux.text}
-                                completed   = {fAux.completed}
-                                onCompleted = {() => vfListCheck(fAux.text)}
-                                onDeleted   = {() => vfListDelete(fAux.text)}
-                            />
-                        ))}
-                    </TodoList_C>
-                )}
-            </TodoContext.Consumer>
             
-            <CreateTodoButton_C/>
+            <TodoList_C>
 
-    </React.Fragment>
-    );
-}
-
-export {AppUI};
-
-/* <TodoList_C>
-
-                {pError && <p>Ah!!! Colapsus Brutus...</p>}
-                {ploading && <p>Estamos cargando, no desesperes...</p>}
-                {(!ploading && !currently_search.length) && <p>!Crea tu Primer Item</p>}
+                {currently_error && <TodosError />}
+                {currently_loading && <TodosLoading />}
+                {(!currently_loading && !aAux.length) && <EmptyTodos />}
 
                 {aAux.map(fAux =>(
                     <TodoItem_C 
@@ -67,5 +48,24 @@ export {AppUI};
                         onCompleted = {() => vfListCheck(fAux.text)}
                         onDeleted   = {() => vfListDelete(fAux.text)}
                     />
-               ))}
-            </TodoList_C> */
+                ))}
+
+                {currently_openModal && (
+                    <Modal_C> 
+                        <FormModal_C></FormModal_C>
+                        {/* <p>---X{aAux[0]?.text}X---</p> */}
+                    </Modal_C>
+                )}
+                
+            </TodoList_C> 
+            
+            <CreateTodoButton_C
+                upgrate_openModal={upgrate_openModal}
+            />
+
+    </React.Fragment>
+    );
+}
+
+export {AppUI};
+ 
