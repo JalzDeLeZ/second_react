@@ -32,3 +32,5 @@ function TodoItem_C(props) {
 }
 
 export {TodoItem_C};
+//personal / contrato
+//diagrama de procesos
