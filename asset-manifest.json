@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/JalzDeLeZ/second_react/static/css/main.77a6c2da.chunk.css",
+    "main.js": "/JalzDeLeZ/second_react/static/js/main.21adbe31.chunk.js",
+    "main.js.map": "/JalzDeLeZ/second_react/static/js/main.21adbe31.chunk.js.map",
+    "runtime-main.js": "/JalzDeLeZ/second_react/static/js/runtime-main.21848362.js",
+    "runtime-main.js.map": "/JalzDeLeZ/second_react/static/js/runtime-main.21848362.js.map",
+    "static/js/2.77cd1094.chunk.js": "/JalzDeLeZ/second_react/static/js/2.77cd1094.chunk.js",
+    "static/js/2.77cd1094.chunk.js.map": "/JalzDeLeZ/second_react/static/js/2.77cd1094.chunk.js.map",
+    "index.html": "/JalzDeLeZ/second_react/index.html",
+    "static/css/main.77a6c2da.chunk.css.map": "/JalzDeLeZ/second_react/static/css/main.77a6c2da.chunk.css.map",
+    "static/js/2.77cd1094.chunk.js.LICENSE.txt": "/JalzDeLeZ/second_react/static/js/2.77cd1094.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.21848362.js",
+    "static/js/2.77cd1094.chunk.js",
+    "static/css/main.77a6c2da.chunk.css",
+    "static/js/main.21adbe31.chunk.js"
+  ]
+}
